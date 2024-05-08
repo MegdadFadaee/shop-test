@@ -85,19 +85,19 @@ $('#orders')[0].innerHTML = `               <div class="myaccount-content">
                                             </div>`;
 
 save_btn.onclick = function (){
-    let url = '/users/addresses/';
+    let url = '/users/addresses';
+    let method = 'POST';
     let body = {
         'state': address_form_state.value,
         'city': address_form_city.value,
         'zipcode': address_form_zipcode.value,
         'address': address_form_address.value,
     }
-    if (getCookie('address_id') === '0') {
-        url += 'create';
-    } else {
-        url += getCookie('address_id') + '/edit';
+    if (getCookie('address_id') != '0') {
+        url += '/' + getCookie('address_id');
+        method = "PATCH";
     }
-    load_data("GET", url, function (){location.reload()}, body);
+    load_data(method, url, function (){location.reload()}, body);
 }
 
 function set_dashboard(user, url){
