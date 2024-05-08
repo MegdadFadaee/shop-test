@@ -1,4 +1,4 @@
-const API_BASE = 'https://api.mahakiha.ir'
+const API_BASE = 'https://api.mahakiha.ir/v02'
 function get_parameter(name){
     if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
         return decodeURIComponent(name[1]);
